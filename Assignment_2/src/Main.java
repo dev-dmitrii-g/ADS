@@ -5,5 +5,22 @@ public class Main {
 
         list = new MyLinkedList<>();
         MyListTest.runAllTests(list);
+
+        MyStack<String> stack = new MyStack<>();
+        stack.push("Hello");
+        stack.push("World");
+        stack.push("Java!");
+
+
+        System.out.println(stack.size());
+        System.out.println(stack.peek());
+        stack.pop();
+        System.out.println(stack.peek());
+        stack.pop();
+        System.out.println(stack.peek());
+        stack.pop();
+        System.out.println(stack.peek());
+        stack.pop();
+        System.out.println(stack.peek());
     }
 }
