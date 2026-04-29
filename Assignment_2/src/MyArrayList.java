@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] data;
@@ -115,7 +117,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
         int i = low - 1;
 
         for (int j = low; j <= high - 1; j++) {
-            if (((Comparable<T>)data[j]).compareTo(pivot) < 0) {
+            if (((T) data[j]).compareTo(pivot) < 0) {
                 i++;
                 this.swap(i, j);
             }
@@ -199,7 +201,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
         return this.size;
     }
 
-    public java.util.Iterator<T> iterator() {
+    public Iterator<T> iterator() {
         return new MyIterator();
     }
 

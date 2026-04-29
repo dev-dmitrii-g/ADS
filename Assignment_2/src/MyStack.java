@@ -10,18 +10,14 @@ public class MyStack<T extends Comparable<T>>  {
     }
 
     public T pop() {
-        if (list.size() <= 0) {
-            throw new IllegalStateException("Stack is empty");
-        }
+        if (isEmpty()) throw new IllegalStateException("Stack is empty");
         T item = list.getLast();
         list.removeLast();
         return item;
     }
 
     public T peek() {
-        if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
-        }
+        if (isEmpty()) throw new IllegalStateException("Stack is empty");
         return list.getLast();
     }
 
