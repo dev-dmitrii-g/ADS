@@ -4,8 +4,8 @@ This project contains implementations of a generic Hash Table using separate cha
 
 ## Project Structure
 
-- `hashtable/`: Implementation of a Hash Table with a custom testing class.
-- `bst/`: Implementation of a Binary Search Tree with in-order traversal.
+- `HashTable/`: Implementation of a Hash Table with a custom testing class.
+- `BST/`: Implementation of a Binary Search Tree with in-order traversal.
 
 ## How to Run
 
@@ -13,16 +13,16 @@ This project contains implementations of a generic Hash Table using separate cha
 This test adds 10,000 random elements to the Hash Table and displays the distribution across buckets to verify the `hashCode` implementation.
 
 ```bash
-javac -d bin hashtable/*.java
-java -cp bin hashtable.Main
+javac HashTable/*.java
+java Main
 ```
 
 ### 2. Binary Search Tree Tests
 This test demonstrates the `put`, `get`, `delete`, and `size` operations, as well as an in-order traversal using an iterator.
 
 ```bash
-javac -d bin bst/*.java
-java -cp bin bst.MainBST
+javac BST/*.java
+java Main
 ```
 
 ## Features
