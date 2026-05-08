@@ -1,29 +1,36 @@
-import java.util.Collection;
-
 public class Main {
+
     public static void main(String[] args) {
-        WeightedGraph<String> graph = new WeightedGraph<>();
+        WeightedGraph<String> weightedGraph = new WeightedGraph<>(true);
+        fillWithWeights(weightedGraph);
 
-        graph.addEdge("Almaty", "Astana", 720);
-        graph.addEdge("Home", "AITU", 150.42);
-        graph.addEdge("AITU", "Astana Hub", 15.3);
-        graph.addEdge("AITU", "Lab Optic", 25.67);
+        System.out.println("Dijkstra:");
+        Search<String> djk = new DijkstraSearch<>(weightedGraph, "Almaty");
+        outputPath(djk, "Kyzylorda");
 
-        BreadthFirstSearch<String> bfs = new BreadthFirstSearch<>(graph, graph.getVertex("Home"));
-        Vertex<String> dest = graph.getVertex("Lab Optic");
 
-        if (bfs.hasPathTo(dest)) {
-            System.out.println("Found!");
-            System.out.println("Path: " + bfs.pathTo(dest));
-        } else {
-            System.out.println("Not found!");
+        System.out.println("--------------------------------");
+
+        System.out.println("BFS:");
+        Search<String> bfs = new BreadthFirstSearch<>(weightedGraph, "Almaty");
+        outputPath(bfs, "Kyzylorda");
+    }
+
+    public static void fillWithWeights(WeightedGraph<String> graph) {
+        graph.addEdge("Almaty", "Astana", 2.1);
+        graph.addEdge("Shymkent", "Atyrau", 7.8);
+        graph.addEdge("Atyrau", "Astana", 7.1);
+        graph.addEdge("Almaty", "Shymkent", 7.2);
+        graph.addEdge("Shymkent", "Astana", 3.9);
+        graph.addEdge("Astana", "Kostanay", 3.5);
+        graph.addEdge("Shymkent", "Kyzylorda", 5.4);
+    }
+
+    public static void outputPath(Search<String> search, String key) {
+        for (String v : search.pathTo(key)) {
+            System.out.print(v + " -> ");
         }
 
-        Vertex<String> aitu = graph.getVertex("AITU");
-        Collection<Vertex<String>> vertices = graph.getVertices();
-
-        for (Vertex<String> vert : vertices) {
-            System.out.println(vert.getData() + " is connected to: " + vert.getAdjacentVertices());
-        }
+        System.out.println();
     }
 }
